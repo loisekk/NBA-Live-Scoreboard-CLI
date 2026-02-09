@@ -1,8 +1,8 @@
 import requests
 import urllib3
 
-# ---------------- CONFIG ----------------
-BASE_URL = "https://data.nba.net/10s"   # ✅ FIXED
+
+BASE_URL = "https://data.nba.net/10s"   
 ALL_JSON = "/prod/v2/today.json"
 
 TIMEOUT = 10
@@ -14,7 +14,7 @@ HEADERS = {
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-# ---------------- HELPERS ----------------
+
 def fetch(url: str) -> dict:
     response = requests.get(
         url,
@@ -26,7 +26,7 @@ def fetch(url: str) -> dict:
     return response.json()
 
 
-# ---------------- API FUNCTIONS ----------------
+-
 def get_links() -> dict:
     data = fetch(BASE_URL + ALL_JSON)
     return data.get("links", {})
@@ -88,7 +88,7 @@ def get_stats() -> None:
         )
 
 
-# ---------------- MAIN ----------------
+
 def main() -> None:
     get_stats()
     # get_scoreboard()
