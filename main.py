@@ -3,20 +3,20 @@ from pprint import PrettyPrinter
 
 
 BASE_URL = "https://data.nba.net"
-ALL_JASON = "/prod/v1/today.jason"
+ALL_JSON = "/prod/v1/today.json"
 
 printer = PrettyPrinter()
 
 
 def get_links():
-    data = get(BASE_URL + ALL_JASON ).jason()
+    data = get(BASE_URL + ALL_JSON ).json()
     links = data['links']
     return links
 
 
 def get_scoreboard():
     scoreboard = get_links()['currentScoreboard']
-    games = [BASE_URL + scoreboard].jason()['games']
+    games = [BASE_URL + scoreboard].json()['games']
 
 
     for game in games:
@@ -32,7 +32,7 @@ def get_scoreboard():
     
 def get_stats():
     stats = get_links()['leagueTeamStatsLeaders']
-    teams = [BASE_URL + stats].jason()['league']['standard']['regularSeason']['teams']
+    teams = [BASE_URL + stats].json()['league']['standard']['regularSeason']['teams']
     printer.pprint(teams[0].keys()) # for list object has no attribute 'keys' -> passing through an [0] 
 
 
