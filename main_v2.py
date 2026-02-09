@@ -1,6 +1,6 @@
 import requests
 
-# ---------------- CONFIG ----------------
+
 SCOREBOARD_URL = (
     "https://cdn.nba.com/static/json/liveData/scoreboard/"
     "todaysScoreboard_00.json"
@@ -13,7 +13,7 @@ HEADERS = {
 
 TIMEOUT = 10
 
-# ---------------- HELPERS ----------------
+
 def fetch(url: str) -> dict | None:
     try:
         response = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
@@ -24,7 +24,6 @@ def fetch(url: str) -> dict | None:
         return None
 
 
-# ---------------- NBA FUNCTIONS ----------------
 def get_scoreboard() -> None:
     data = fetch(SCOREBOARD_URL)
 
@@ -58,7 +57,7 @@ def get_team_ppg() -> None:
     )
 
 
-# ---------------- MAIN ----------------
+
 def main() -> None:
     get_scoreboard()
     get_team_ppg()
